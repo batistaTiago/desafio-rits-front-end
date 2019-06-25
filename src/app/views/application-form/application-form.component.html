@@ -1,0 +1,31 @@
+<form>
+    <h3>Informações pessoais</h3>
+    <app-custom-input inputType="text" placeholderText="NOME COMPLETO"></app-custom-input>
+    <app-custom-input inputType="email" placeholderText="E-MAIL"></app-custom-input>
+    <app-custom-input inputType="tel" placeholderText="TELEFONE (COM DDD)"></app-custom-input>
+    
+    <h3>Carta de apresentação</h3>
+    <app-custom-input [shouldValidate]=false inputType="textarea" placeholderText="CONTE SUA MOTIVAÇÃO (opcional)"></app-custom-input>
+    
+    
+    
+    <h3>Últimas perguntas</h3>
+    
+    <app-custom-input placeholderText="URL DO SEU LINKEDIN" inputType="url"></app-custom-input>
+    <app-custom-input placeholderText="URL DO SEU GITHUB" inputType="url"></app-custom-input>
+    
+    <app-custom-input 
+        placeholderText="QUAL O SEU NÍVEL DE INGLÊS" 
+        inputType="select" 
+        [selectOptions]='["Escolha", "Nenhum", "Básico", "Intermediário", "Avançado", "Fluente", "Nativo"]'>
+    </app-custom-input>
+    
+    <app-custom-input placeholderText="PRETENSÃO SALARIAL" inputType="url"></app-custom-input>
+    
+    
+    <h3>Anexe seu currículo em PDF ou DOC</h3>
+    <input type="file" name="file" id="file" class="file-input" />
+    <label for="file"><i class="fas fa-paperclip"></i><span>Escolha o arquivo</span></label>
+    
+    <button type="submit" class="submit-form-button">ENVIAR</button>
+</form>

@@ -1,0 +1,71 @@
+@import '../../variables.scss';
+
+$box-shadow-params: 0px 0px 5px;
+
+.root {
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+
+    span {
+        position: absolute;
+        top: 10px;
+        left: $left-distance;
+        z-index: 1;
+        font-size: 0.7em;
+        line-height: 0.7em;
+        color: #6C6472;
+    }
+
+    input, select {
+        height: 60px;
+        padding-top: 15px;
+    }
+
+    textarea {
+        height: 140px;
+        resize: none;
+        padding-top: 25px;
+    }
+
+    input, textarea, select {
+        
+        background-color: transparent;
+
+        font-size: 16px;
+        line-height: 130%;
+        letter-spacing: -0.025em;
+
+        margin-bottom: 10px;
+        width: 560px;
+        
+        position: relative;
+        padding-left: $left-distance;
+
+        border-radius: 3px;
+        border: 2px solid #ddd;
+
+        transition: 0.25s ease-in-out;
+        transition-property: border-color, box-shadow;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        box-shadow: $box-shadow-params darken($main-dark-color, 50%);
+    }
+
+    input.valid, textarea.valid {
+        border-color: $main-green-color;
+    }
+
+    input.valid, textarea.valid {
+        box-shadow: $box-shadow-params $main-green-color;
+    }
+    
+    input.invalid, textarea.invalid {
+        border-color: #EA386D;
+        box-shadow: $box-shadow-params #EA386D;
+    }
+}
+
+

@@ -1,0 +1,67 @@
+@import '../variables.scss';
+
+form {
+    margin-top: 100px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+        margin-bottom: 25px;
+    }
+
+    .file-input {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .file-input + label {
+        border: 2px solid $main-green-color;
+        border-radius: 30px;
+        width: 358px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bold;
+        color: $main-dark-color;
+        margin-top: 15px;
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .submit-form-button {
+
+        margin-top: 50px;
+        height: 60px;
+        width: 560px;
+
+        cursor: pointer;
+
+        border: none;
+        border-radius: 30px;
+
+        font-size: 20px;
+        line-height: 24px;
+
+        background-color: $main-green-color;
+        color: $main-dark-color;
+        font-weight: bold;
+
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .submit-form-button:hover {
+        background-color: darken($main-green-color, 25%);
+    }
+}
