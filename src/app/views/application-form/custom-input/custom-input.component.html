@@ -11,7 +11,7 @@
 
     <textarea *ngIf="inputType === 'textarea'" class="{{ pristine || !shouldValidate ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)"></textarea>
 
-    <select *ngIf="inputType === 'select' && selectOptions && selectOptions.length > 0">
+    <select (change)="onSelectChange($event)" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" *ngIf="inputType === 'select' && selectOptions && selectOptions.length > 0">
         <option *ngFor="let option of selectOptions; let i = index" [value]=i>{{ option }}</option>
     </select>
     

@@ -8,7 +8,7 @@ import { FormValidator } from '../../../shared/form-validator';
 })
 export class CustomInputComponent implements OnInit {
 
-  private inputValue: string = null
+  private inputValue: string = ''
 
   @Input() inputType: InputTypes = null
   @Input() placeholderText: string = null
@@ -22,7 +22,7 @@ export class CustomInputComponent implements OnInit {
   ngOnInit() {
   }
 
-  public isValid() {
+  public isValid(): boolean {
     if (this.inputType === InputTypes.Text) {
       return FormValidator.validateFullName(this.inputValue)
     }
@@ -42,10 +42,24 @@ export class CustomInputComponent implements OnInit {
     if (this.inputType === InputTypes.URL) {
       return FormValidator.validateURL(this.inputValue)
     }
+
+    if (this.inputType === InputTypes.Select) {
+      console.log('valid? ' + FormValidator.validateEnglishLevel(this.inputValue))
+      return FormValidator.validateEnglishLevel(this.inputValue)
+    }
+
+    return false
   }
 
   public onUserInput(event: Event) {
     this.inputValue = (<HTMLInputElement>event.target).value
+    this.pristine = false
+  }
+
+  public onSelectChange(event: Event) {
+    console.log('firing')
+    this.inputValue = (<HTMLSelectElement>event.target).value
+    console.log(this.inputValue)
     this.pristine = false
   }
 
