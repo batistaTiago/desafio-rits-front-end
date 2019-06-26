@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CustomInputComponent } from './custom-input/custom-input.component'
-import { FormValidator } from '../../shared/form-validator';
+import { FormValidator } from '../../../shared/form-validator';
+import { ApplicationService } from '../../../services/application.service';
 
 @Component({
   selector: 'app-application-form',
   templateUrl: './application-form.component.html',
-  styleUrls: ['./application-form.component.scss']
+  styleUrls: ['./application-form.component.scss'],
+  providers: [ ApplicationService ]
 })
 export class ApplicationFormComponent implements OnInit {
   
@@ -13,7 +15,7 @@ export class ApplicationFormComponent implements OnInit {
 
   public resumeFile: File = null
 
-  constructor() { }
+  constructor(private applicationService: ApplicationService) { }
 
   ngOnInit() {
     this.inputs = [
@@ -61,7 +63,16 @@ export class ApplicationFormComponent implements OnInit {
     )
 
     if ((this.inputs.length === validInputs.length) && (this.fileIsValid())) {
-      
+      this.applicationService.postApplication({
+        nomeCompleto: this.nameInput.getValue(),
+        curriculo: this.resumeFile,
+        email: this.emailInput.getValue(),
+        githubURL: this.githubInput.getValue(),
+        linkedinURL: this.linedinInput.getValue(),
+        nivelIngles: parseInt(this.nivelInglesInput.getValue()),
+        pretensaoSalarial: parseFloat(this.salarioInput.getValue()),
+        telefone: this.phoneInput.getValue()
+      })
     } else {
       // alert('corriga os erros do form')
     }

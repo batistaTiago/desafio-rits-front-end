@@ -19,6 +19,13 @@ a {
     text-decoration: none;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 a.bt-btn {
     background-color: $main-green-color;
     padding: 12px 50px;

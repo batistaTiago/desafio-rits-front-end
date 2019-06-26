@@ -1,0 +1,18 @@
+@import '../variables.scss';
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+header {
+    background-color: $main-purple-color;
+    display: flex;
+    justify-content: center
+}
+
+app-footer {
+    display: flex;
+    justify-content: space-around;
+}

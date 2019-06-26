@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { FormValidator } from '../../../shared/form-validator';
+import { FormValidator } from '../../../../shared/form-validator';
 
 @Component({
   selector: 'app-custom-input',
@@ -25,6 +25,10 @@ export class CustomInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
+  public getValue(): string {
+    return this.inputValue
+  }
 
   public isValid(): boolean {
     if (this.inputType === InputTypes.Text) {
@@ -64,9 +68,7 @@ export class CustomInputComponent implements OnInit {
   }
 
   public onSelectChange(event: Event) {
-    console.log('firing')
     this.inputValue = (<HTMLSelectElement>event.target).value
-    console.log(this.inputValue)
     this.pristine = false
   }
 
@@ -89,7 +91,6 @@ export class CustomInputComponent implements OnInit {
   }
 
 }
-
 
 enum InputTypes {
   Text = 'text',

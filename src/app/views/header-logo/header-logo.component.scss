@@ -1,0 +1,23 @@
+.logo-root {
+    width: 140px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+        width: 100%;
+        height: auto;
+    }
+
+    span {
+        color: white;
+        font-size: 9px;
+        line-height: 11px;
+        text-align: center;
+        letter-spacing: 0.5em;
+        margin-top: 5px;
+    }
+
+}
