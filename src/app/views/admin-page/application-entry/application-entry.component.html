@@ -1,0 +1,23 @@
+<div class="application-container">
+    <span>Nome: </span> <span>{{ applicationData.nomeCompleto }}</span>
+    <span>Telefone: </span> <span>{{ applicationData.telefone }}</span>
+    <span>Email: </span> <a [href]="applicationData.email">{{ applicationData.email }}</a>
+    <span>Github: </span> <a [href]="applicationData.githubURL">{{ applicationData.githubURL }}</a>
+    <span>LinkedIn: </span> <a [href]="applicationData.linkedinURL">{{ applicationData.linkedinURL }}</a>
+    <span>Nível de inglês: </span> <span>{{ applicationData.nivelIngles }}</span>
+    <span>Pretensão salarial: </span> <span>{{ applicationData.pretensaoSalarial }}</span>
+
+    <span>Status: </span> <span>{{ applicationData.status.toUpperCase() }}</span>
+
+    <div class="buttons-container" *ngIf="applicationData.status === 'processamento' || applicationData.status === 'pendente'">
+
+        <hr>
+
+
+
+        <h3>Alterar status</h3>
+        <button (click)="setStatus('processamento')" *ngIf="applicationData.status != 'processamento'" class="processamento">Em processamento</button>
+        <button (click)="setStatus('aceito')" *ngIf="applicationData.status != 'aceito'" class="aceitar">Aceitar</button>
+        <button (click)="setStatus('rejeitado')" *ngIf="applicationData.status != 'rejeitado'" class="rejeitar">Rejeitar</button>
+    </div>
+</div>

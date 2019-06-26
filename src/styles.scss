@@ -44,8 +44,87 @@ a.bt-btn {
     margin-left: 15px;
 }
 
+.spinner {
+    border-radius: 50%;
+
+    border: 8px solid;
+
+    border-top-color: $main-green-color;
+    border-bottom-color: $main-green-color;
+    border-left-color: $main-purple-color;
+    border-right-color: $main-purple-color;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s infinite forwards linear, spinnerShadow 2s 0.25s infinite forwards linear;
+    margin-top: 50px;
+    margin-bottom: 5px;
+    // box-shadow: 0px 0px 15px 5px $main-purple-color;
+}
+
+.spinner + span {
+    margin-bottom: 45px;
+    text-align: center;
+    font-weight: 900;
+}
+
 @media (min-width: 1200px) {
     .container {
         width: 1136px;
+    }
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+        // box-shadow: 0px 0px 5px 1px $main-purple-color;
+    }
+    10% {
+        transform: rotate(20deg);
+        // box-shadow: 0px 0px 5px 1px $main-purple-color;
+    }
+    30% {
+        transform: rotate(90deg);
+        // box-shadow: 0px 0px 20px 3px $main-purple-color;
+    }
+    50% {
+        transform: rotate(180deg);
+        // box-shadow: 0px 0px 30px 10px $main-purple-color;
+    }
+    70% {
+        transform: rotate(270deg);
+        // box-shadow: 0px 0px 20px 5px $main-purple-color;
+    }
+    90% {
+        transform: rotate(340deg);
+        // box-shadow: 0px 0px 5px 1px $main-purple-color;
+    }
+    100% {
+        transform: rotate(360deg);
+        // box-shadow: 0px 0px 5px 1px $main-purple-color;
+    }
+}
+
+@keyframes spinnerShadow{
+    0% {
+        box-shadow: 0px 0px 5px 1px $main-purple-color;
+    }
+    10% {
+        box-shadow: 0px 0px 5px 3px $main-purple-color;
+    }
+    30% {
+        box-shadow: 0px 0px 15px 3px $main-purple-color;
+    }
+    50% {
+        box-shadow: 0px 0px 20px 5px $main-purple-color;
+    }
+    70% {
+        box-shadow: 0px 0px 15px 3px $main-purple-color;
+    }
+    90% {
+        box-shadow: 0px 0px 5px 3px $main-purple-color;
+    }
+    100% {
+        box-shadow: 0px 0px 5px 1px $main-purple-color;
     }
 }

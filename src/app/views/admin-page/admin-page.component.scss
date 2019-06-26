@@ -1,9 +1,14 @@
 @import '../variables.scss';
 
+#admin {
+    display: flex;
+    justify-content: center;
+}
+
 .container {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    flex-direction: column;
 }
 
 header {
@@ -11,6 +16,31 @@ header {
     display: flex;
     justify-content: center
 }
+
+.status-filter-selection {
+    border: 2px solid $main-dark-color;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    margin-top: 30px;
+    padding: 10px;
+    align-self: center;
+
+    
+    select {
+        margin-left: 20px;
+    }
+}
+
+.applications-root {
+    padding: 25px;
+    display: flex;
+    flex-flow: wrap;
+}
+
+// app-application-entry {
+    // flex-grow: 1;
+// }
 
 app-footer {
     display: flex;

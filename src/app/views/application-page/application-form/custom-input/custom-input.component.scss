@@ -60,8 +60,8 @@ $box-shadow-params: 0px 0px 5px;
     }
     
     input.invalid, textarea.invalid, select.invalid {
-        border-color: #EA386D;
-        box-shadow: $box-shadow-params #EA386D;
+        border-color: $main-red-color;
+        box-shadow: $box-shadow-params $main-red-color;
     }
 }
 

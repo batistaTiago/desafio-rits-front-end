@@ -5,6 +5,8 @@
 
     <input type="number" *ngIf="inputType === 'number'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
+    <input type="number" *ngIf="inputType === 'money'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)" min="1" step="any">
+
     <input type="email" *ngIf="inputType === 'email'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
     <input type="url" *ngIf="inputType === 'url'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">

@@ -7,4 +7,7 @@ export interface IApplication {
     nivelIngles: number
     pretensaoSalarial: number
     curriculo: File
+
+    id?: number
+    status?: string
 }

@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ApplicationPage } from './views/application-page/application-page.component';
 import { AdminPage } from './views/admin-page/admin-page.component';
 import { HeaderLogoComponent } from './views/header-logo/header-logo.component';
+import { ApplicationEntryComponent } from './views/admin-page/application-entry/application-entry.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HeaderLogoComponent } from './views/header-logo/header-logo.component';
     NavBarComponent,
     ApplicationPage,
     AdminPage,
-    HeaderLogoComponent
+    HeaderLogoComponent,
+    ApplicationEntryComponent
   ],
   imports: [
     BrowserModule,

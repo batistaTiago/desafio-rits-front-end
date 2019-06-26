@@ -35,7 +35,7 @@ export class CustomInputComponent implements OnInit {
       return FormValidator.validateFullName(this.inputValue)
     }
 
-    if (this.inputType === InputTypes.Number) {
+    if (this.inputType === InputTypes.Money) {
       return FormValidator.validateSalary(this.inputValue)
     }
 
@@ -99,5 +99,6 @@ enum InputTypes {
   Phone = 'tel',
   Area = 'textarea',
   URL = 'url',
-  Select = 'select'
+  Select = 'select',
+  Money = 'money'
 }
