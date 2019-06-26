@@ -1,17 +1,35 @@
 export class FormValidator {
 
+    private static validFileExtensions: string[] = ['pdf', 'doc', 'docx']
+    private static maxFileSize: number = 10 * 1024 * 1024; // 50 MB
+
     public static validateEmail(email: string): boolean {
-        let regEx = /\S+@\S+\.\S+/
-        return regEx.test(email)
+        try {
+            let regEx = /\S+@\S+\.\S+/
+            return regEx.test(email)
+        } catch {
+            return false
+        }
+        
+    }
+
+    public static validateSalary(salary: string): boolean {
+        try {
+            return parseInt(salary) > 0
+        } catch {
+            return false
+        }
+        
     }
 
     // TODO: invalidar caso haja letras
     public static validatePhoneNumber(phoneNumber: string): boolean {
-        if (phoneNumber) {
+        try {
             phoneNumber = phoneNumber.replace('(', '').replace(')', '').replace(' ', '').replace('-', '')
             return (phoneNumber.length >= 10) && (phoneNumber.length <= 13)
+        } catch {
+            return false
         }
-        return false
     }
 
     public static validateFullName(name: string): boolean {
@@ -26,27 +44,47 @@ export class FormValidator {
             )
 
             return (isComposed && (parts.length === validParts.length) && name.length > 6)
-        } catch (_) {
+        } catch {
             return false
         }
 
     }
 
     public static validateText(text: string): boolean {
-        return (text && text.length > 3)
+        try {
+            return text.length > 3
+        } catch {
+            return false
+        }
+        
     }
 
     public static validateURL(url: string): boolean {
         try {
             new URL(url)
             return true
-        } catch (_) {
+        } catch {
             return false
         }
     }
 
     public static validateEnglishLevel(level: string) {
-        const result = parseInt(level) > 0
-        return result
+        try {
+            const result = parseInt(level) > 0
+            return result
+        } catch {
+            return false
+        }
+        
+    }
+
+    public static validateFile(file: File): boolean {
+        try {
+            const extension = file.name.split('.').pop();
+            return this.validFileExtensions.includes(extension) && file.size < this.maxFileSize;
+        } catch {
+            return false
+        }
+        
     }
 }

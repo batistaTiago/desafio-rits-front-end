@@ -28,7 +28,14 @@ a.bt-btn {
     line-height: 12px;
 }
 
-
+.invalid-feedback {
+    color: red;
+    font-weight: 600;
+    letter-spacing: -0.025px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
 
 @media (min-width: 1200px) {
     .container {

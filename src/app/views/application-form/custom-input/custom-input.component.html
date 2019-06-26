@@ -1,7 +1,9 @@
-<div class="root">
+<div #rootElement class="root {{ isShaking ? 'shake-animation' : '' }}" (animationend)="resetAnimationTrigger()">
     <span>{{ placeholderText }}</span>
 
     <input type="text" *ngIf="inputType === 'text'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
+
+    <input type="number" *ngIf="inputType === 'number'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
     <input type="email" *ngIf="inputType === 'email'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
@@ -15,4 +17,5 @@
         <option *ngFor="let option of selectOptions; let i = index" [value]=i>{{ option }}</option>
     </select>
     
+    <small *ngIf="validated && !isValid()" class="invalid-feedback">{{ errorText }}</small>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormValidator } from '../../../shared/form-validator';
 
 @Component({
@@ -14,17 +14,25 @@ export class CustomInputComponent implements OnInit {
   @Input() placeholderText: string = null
   @Input() shouldValidate: boolean = false
   @Input() selectOptions: string[] = null
+  @Input() errorText: string = 'Campo inválido'
+
+  @ViewChild('rootElement') rootElement: ElementRef
 
   public pristine: boolean = true
+  public validated: boolean = false
+  public isShaking: boolean = false
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public isValid(): boolean {
     if (this.inputType === InputTypes.Text) {
       return FormValidator.validateFullName(this.inputValue)
+    }
+
+    if (this.inputType === InputTypes.Number) {
+      return FormValidator.validateSalary(this.inputValue)
     }
 
     if (this.inputType === InputTypes.Email) {
@@ -44,7 +52,6 @@ export class CustomInputComponent implements OnInit {
     }
 
     if (this.inputType === InputTypes.Select) {
-      console.log('valid? ' + FormValidator.validateEnglishLevel(this.inputValue))
       return FormValidator.validateEnglishLevel(this.inputValue)
     }
 
@@ -63,11 +70,30 @@ export class CustomInputComponent implements OnInit {
     this.pristine = false
   }
 
+  public setValidated() {
+    this.validated = true
+  }
+
+  public wasValidated(): boolean {
+    return this.validated
+  }
+
+  public triggerShakeAnimation() {
+    this.rootElement.nativeElement.scrollIntoView()
+    window.scrollBy(0, -100)
+    this.isShaking = true
+  }
+
+  public resetAnimationTrigger() {
+    this.isShaking = false
+  }
+
 }
 
 
 enum InputTypes {
   Text = 'text',
+  Number = 'number',
   Email = 'email',
   Phone = 'tel',
   Area = 'textarea',

@@ -65,4 +65,56 @@ $box-shadow-params: 0px 0px 5px;
     }
 }
 
+.root.shake-animation {
+    animation: shakeAnimation 0.5s linear 1 forwards;
+}
 
+
+@keyframes shakeAnimation {
+
+    $base-shake-offset: 7px;
+
+    0% {
+        transform: translate(0)
+    }
+
+    10% {
+        transform: translate($base-shake-offset)
+    }
+
+    20% {
+        transform: translate(-2 * $base-shake-offset)
+    }
+
+    30% {
+        transform: translate(3 * $base-shake-offset)
+    }
+
+    40% {
+        transform: translate(-4 * $base-shake-offset)
+    }
+
+    50% {
+        transform: translate(0)
+    }
+
+    60% {
+        transform: translate(4 * $base-shake-offset)
+    }
+
+    70% {
+        transform: translate(-3 * $base-shake-offset)
+    }
+
+    80% {
+        transform: translate(2 * $base-shake-offset)
+    }
+
+    90% {
+        transform: translate(-1 * $base-shake-offset)
+    }
+
+    100% {
+        transform: translate(0)
+    }
+}
