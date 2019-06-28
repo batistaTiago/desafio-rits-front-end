@@ -15,6 +15,7 @@ import { ApplicationPage } from './views/application-page/application-page.compo
 import { AdminPage } from './views/admin-page/admin-page.component';
 import { HeaderLogoComponent } from './views/header-logo/header-logo.component';
 import { ApplicationEntryComponent } from './views/admin-page/application-entry/application-entry.component';
+import { LoadingSpinnerComponent } from './views/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ApplicationEntryComponent } from './views/admin-page/application-entry/
     ApplicationPage,
     AdminPage,
     HeaderLogoComponent,
-    ApplicationEntryComponent
+    ApplicationEntryComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

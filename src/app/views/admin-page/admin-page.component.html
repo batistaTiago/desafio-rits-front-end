@@ -1,11 +1,11 @@
 <section id="admin">
   <div class="container">
     <header>
-      
+
       <app-header-logo></app-header-logo>
-      
+
     </header>
-    
+
     <div class="status-filter-selection">
       <label>Filtro de status das aplicações</label>
       <select (change)="filterChanged($event)">
@@ -16,31 +16,19 @@
         <option value="aceito">Aceito</option>
       </select>
     </div>
-    
-    
-    <div class="applications-root">
-      
-      <div *ngIf="!fetchingApplications; else loading">
-        
-        <div *ngIf="applications.length > 0">
-          <app-application-entry (statusButtonClick)="updateApplicationStatus($event)" *ngFor="let application of applications" [applicationData]="application"></app-application-entry>
-        </div>
-        
-        <div *ngIf="applications.length === 0" style="display: flex; justify-content: center; width: 100%; background: red">
-          <h3 style="text-align: center">Nenhuma aplicação foi encontrada para o filtro selecionado.</h3>
-        </div>
-        
-      </div> 
-      
+
+
+    <div class="applications-root" *ngIf="!fetchingApplications && applications.length > 0">
+      <app-application-entry (statusButtonClick)="updateApplicationStatus($event)"
+        *ngFor="let application of applications" [applicationData]="application"></app-application-entry>
     </div>
-    
-    <ng-template #loading>
-      <div style="display: flex; flex-direction: column; justify-content: center; align-items:center; width: 100%">
-        <div class="spinner"></div>
-        <span>Loading</span>
-      </div>
-    </ng-template> 
-  
-  <app-footer></app-footer>
-</div>
+
+    <app-loading-spinner *ngIf="fetchingApplications"></app-loading-spinner>
+
+    <h3 *ngIf="!fetchingApplications && applications.length === 0">
+      Nenhuma aplicação foi encontrada para o filtro selecionado
+    </h3>
+
+    <app-footer></app-footer>
+  </div>
 </section>

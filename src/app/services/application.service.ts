@@ -20,14 +20,13 @@ export class ApplicationService {
             }
             const response = await this.httpClient.get(url).toPromise()
             const returnedApplications: IApplication[] = (<IApplication[]><unknown>response)
-            // console.log(returnedApplications)
             return returnedApplications
         } catch {
             return []
         }
     }
 
-    public async postApplication(application: IApplication): Promise<IApplication> {
+    public async postApplication(application: FormData): Promise<IApplication> {
         try {
             const response = await this.httpClient.post(`${this.apiURL}/applications`, application, { observe: 'response' }).toPromise()
             const returnedApplication: IApplication = (<IApplication><unknown>response.body)

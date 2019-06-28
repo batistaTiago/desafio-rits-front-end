@@ -38,9 +38,16 @@ header {
     flex-flow: wrap;
 }
 
-// app-application-entry {
-    // flex-grow: 1;
-// }
+h3 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    color: $main-red-color;
+    font-size: 2em;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px $main-dark-color;
+    text-align: center;
+}
 
 app-footer {
     display: flex;

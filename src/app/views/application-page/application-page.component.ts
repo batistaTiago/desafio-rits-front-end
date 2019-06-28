@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicationPage implements OnInit {
 
+  public showFeedback: boolean
+  public postingApplication: boolean = false
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public formSubmitted() {
+    this.postingApplication = true
+  }
+
+  public parsePostResult(result: boolean) {
+    if (result === true) {
+      this.showFeedback = true
+    } else {
+      this.showFeedback = false
+    }
+
+    this.postingApplication = false
   }
 
 }

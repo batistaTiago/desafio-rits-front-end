@@ -27,12 +27,12 @@
     <app-custom-input #salarioInput placeholderText="PRETENSÃO SALARIAL" inputType="money" errorText="A quantia informada é inválida"></app-custom-input>
     
     <h3>Anexe seu currículo em PDF ou DOC</h3>
-    <input type="file" name="file" id="file" class="file-input" accept=".doc, .docx, .pdf" (change)="resumeSubmitted($event)" />
+    <input type="file" name="file" id="file" class="bt-hidden-element" accept=".doc, .docx, .pdf" (change)="resumeSubmitted($event)" />
     <label for="file"><i class="fas fa-paperclip"></i><span>Escolha o arquivo</span></label>
     <small *ngIf="resumeFile && !fileIsValid()" class="invalid-feedback">O arquivo selecionado é inválido: use extensões doc, docx ou pdf e um tamanho máximo de 10MB</small>
     
     <button type="submit" class="submit-form-button">ENVIAR</button>
     
 </form>
-</section>
 
+</section>

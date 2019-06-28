@@ -1,3 +1,32 @@
 <app-hero></app-hero>
-<app-application-form></app-application-form>
+
+<div class="feedback-container container" *ngIf="showFeedback !== undefined">
+    
+    <div *ngIf="showFeedback === false">
+        <h2 class="fail">Erro!</h2>
+        
+        <p>
+            Não foi possível registrar sua aplicação tente novamente. Se o erro persistir, tente novamente mais tarde.
+        </p>
+    </div>
+    <div *ngIf="showFeedback === true">
+        <h2 class="success">Sucesso!</h2>
+        
+        <p>
+            Sua aplicação foi registrada com sucesso. 
+            Caso haja interesse, entraremos em contato através do email e/ou número de telefone fornecido.
+        </p>
+    </div>
+    
+    
+</div>
+
+<app-application-form 
+class="{{ (showFeedback === undefined && postingApplication === false) ? '' : 'bt-hidden-element' }}"
+(formSubmitted)="formSubmitted($event)"
+(postResult)="parsePostResult($event)"
+></app-application-form>
+
+<app-loading-spinner *ngIf="postingApplication === true"></app-loading-spinner>
+
 <app-footer></app-footer>

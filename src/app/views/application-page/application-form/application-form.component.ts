@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { CustomInputComponent } from './custom-input/custom-input.component'
 import { FormValidator } from '../../../shared/form-validator';
 import { ApplicationService } from '../../../services/application.service';
@@ -7,15 +7,20 @@ import { ApplicationService } from '../../../services/application.service';
   selector: 'app-application-form',
   templateUrl: './application-form.component.html',
   styleUrls: ['./application-form.component.scss'],
-  providers: [ ApplicationService ]
+  providers: [ApplicationService]
 })
 export class ApplicationFormComponent implements OnInit {
-  
+
   public inputs: CustomInputComponent[] = []
 
   public resumeFile: File = null
 
   constructor(private applicationService: ApplicationService) { }
+
+  @Output() formSubmitted: EventEmitter<any> = new EventEmitter()
+
+  @Output() postResult: EventEmitter<any> = new EventEmitter()
+  
 
   ngOnInit() {
     this.inputs = [
@@ -39,19 +44,15 @@ export class ApplicationFormComponent implements OnInit {
   @ViewChild('nivelInglesInput') nivelInglesInput: CustomInputComponent;
   @ViewChild('salarioInput') salarioInput: CustomInputComponent;
 
-  public validateAndSubmit(event: Event) {
-    const target = <HTMLFormElement>event.target
-    
-    event.preventDefault()
-    
+  private isValid(): boolean {
     let shaken: boolean = false
 
     const validInputs = this.inputs.filter(
       (input) => {
 
         const valid = input.isValid()
-        
-        if (input.wasValidated() && !valid && !shaken) {          
+
+        if (input.wasValidated() && !valid && !shaken) {
           input.triggerShakeAnimation()
           shaken = true
         } else {
@@ -62,20 +63,46 @@ export class ApplicationFormComponent implements OnInit {
       }
     )
 
-    if ((this.inputs.length === validInputs.length) && (this.fileIsValid())) {
-      this.applicationService.postApplication({
-        nomeCompleto: this.nameInput.getValue(),
-        curriculo: this.resumeFile,
-        email: this.emailInput.getValue(),
-        githubURL: this.githubInput.getValue(),
-        linkedinURL: this.linedinInput.getValue(),
-        nivelIngles: parseInt(this.nivelInglesInput.getValue()),
-        pretensaoSalarial: parseFloat(this.salarioInput.getValue()),
-        telefone: this.phoneInput.getValue()
-      })
-    } else {
-      // alert('corriga os erros do form')
-    }
+    return (this.inputs.length === validInputs.length) && (this.fileIsValid())
+  }
+
+  private buildFormRequest(): FormData {
+
+    const formData = new FormData()
+    formData.set('nomeCompleto', this.nameInput.getValue())
+    formData.set('curriculo', this.resumeFile)
+    formData.set('email', this.emailInput.getValue())
+    formData.set('githubURL', this.githubInput.getValue())
+    formData.set('linkedinURL', this.linedinInput.getValue())
+    formData.set('english_level_id', this.nivelInglesInput.getValue())
+    formData.set('pretensaoSalarial', this.salarioInput.getValue())
+    formData.set('telefone', this.phoneInput.getValue())
+
+    return formData
+  }
+
+  public async validateAndSubmit(event: Event) {
+
+    event.preventDefault()
+
+    if (this.isValid()) {
+      try {
+
+        const formData = this.buildFormRequest()
+        this.formSubmitted.emit()
+        const result = await this.applicationService.postApplication(formData)
+        if (result) {
+          this.postResult.emit(true)
+        } else {
+          this.postResult.emit(false)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    } 
+    // else if (this.inputs.some(input => input.wasValidated())) {
+    //   alert('corriga os erros do form')
+    // }
 
   }
 
@@ -84,7 +111,7 @@ export class ApplicationFormComponent implements OnInit {
   }
 
   public resumeSubmitted(event: Event) {
-    const target = (<HTMLInputElement> event.target)
+    const target = (<HTMLInputElement>event.target)
     this.resumeFile = target.files[0]
   }
 

@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 app-application-form {
     display: flex;
     justify-content: center;
@@ -6,4 +8,40 @@ app-application-form {
 app-footer {
     display: flex;
     justify-content: space-around;
+}
+
+.feedback-container {
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        margin-top: 150px;
+        margin-bottom: 150px;
+        
+        h2 {
+            font-size: 5em;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 4px $main-dark-color;
+        }
+
+        h2.success {
+            color: $main-green-color;
+        }
+
+        h2.fail {
+            color: $main-red-color;
+        }
+        
+        p {
+            letter-spacing: 0.75px;
+            font-size: 1.5em;
+            color: $main-dark-color;
+            text-align: justify;
+        }
+    }
+    
 }

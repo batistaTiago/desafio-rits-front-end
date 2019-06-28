@@ -10,7 +10,7 @@ import { ApplicationService } from '../../services/application.service';
 })
 export class AdminPage implements OnInit {
 
-  public applications: IApplication[] = []
+  public applications: IApplication[]
   public statusFilter: string
 
   public fetchingApplications: boolean = true
@@ -30,6 +30,7 @@ export class AdminPage implements OnInit {
 
   public async updateApplications() {
     this.applications = await this.applicationService.getApplications(this.statusFilter)
+    console.log(this.applications)
     this.fetchingApplications = false
   }
 

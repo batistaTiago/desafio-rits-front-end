@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IApplication } from '../../../shared/application.interface';
+import { EnvironmentConfig } from '../../../shared/environment.config';
 
 @Component({
   selector: 'app-application-entry',
@@ -14,6 +15,8 @@ export class ApplicationEntryComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  public apiURL = EnvironmentConfig.getSettings().url
 
   @Output() statusButtonClick: EventEmitter<[string, number]> = new EventEmitter<[string, number]>()
 
