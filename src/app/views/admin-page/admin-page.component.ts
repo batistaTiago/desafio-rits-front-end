@@ -35,8 +35,8 @@ export class AdminPage implements OnInit {
   }
 
 
-  public updateApplicationStatus(event: [number, string]) {
-    this.applicationService.updateApplicationStatus(event)
+  public updateApplicationStatus(eventData: { id: number, status: string }) {
+    this.applicationService.updateApplicationStatus(eventData)
   }
   
 

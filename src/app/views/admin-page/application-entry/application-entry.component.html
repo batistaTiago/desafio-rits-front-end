@@ -4,21 +4,21 @@
     <span>Email: </span> <a [href]="applicationData.email">{{ applicationData.email }}</a>
     <span>Github: </span> <a [href]="applicationData.githubURL">{{ applicationData.githubURL }}</a>
     <span>LinkedIn: </span> <a [href]="applicationData.linkedinURL">{{ applicationData.linkedinURL }}</a>
-    <span>Nível de inglês: </span> <span>{{ applicationData.nivelIngles }}</span>
-    <span>Pretensão salarial: </span> <span>{{ applicationData.pretensaoSalarial }}</span>
+    <span>Nível de inglês: </span> <span>{{ applicationData.english_level.nivelIngles }}</span>
+    <span>Pretensão salarial: </span> <span>R$ {{ applicationData.pretensaoSalarial }}</span>
     <span>Currículo: </span> <a target="_download" href="{{apiURL}}/download/{{ applicationData.id }}"><i class="fas fa-link"></i>Download</a>
 
-    <span>Status: </span> <span>{{ applicationData.status.toUpperCase() }}</span>
+    <span>Status: </span> <span>{{ applicationData.application_status.status.toUpperCase() }}</span>
 
-    <div class="buttons-container" *ngIf="applicationData.status === 'processamento' || applicationData.status === 'pendente'">
+    <div class="buttons-container" *ngIf="applicationData.application_status.status === 'processamento' || applicationData.application_status.status === 'pendente'">
 
         <hr>
 
 
 
         <h3>Alterar status</h3>
-        <button (click)="setStatus('processamento')" *ngIf="applicationData.status != 'processamento'" class="processamento">Em processamento</button>
-        <button (click)="setStatus('aceito')" *ngIf="applicationData.status != 'aceito'" class="aceitar">Aceitar</button>
-        <button (click)="setStatus('rejeitado')" *ngIf="applicationData.status != 'rejeitado'" class="rejeitar">Rejeitar</button>
+        <button (click)="setStatus('2')" *ngIf="applicationData.application_status.status != 'processamento'" class="processamento">Em processamento</button>
+        <button (click)="setStatus('3')" *ngIf="applicationData.application_status.status != 'aceito'" class="aceitar">Aceitar</button>
+        <button (click)="setStatus('4')" *ngIf="applicationData.application_status.status != 'rejeitado'" class="rejeitar">Rejeitar</button>
     </div>
 </div>

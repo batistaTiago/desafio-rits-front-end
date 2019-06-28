@@ -5,13 +5,12 @@ import { EnvironmentConfig } from "../shared/environment.config"
 
 @Injectable()
 export class ApplicationService {
-
-    private apiURL: string
-
+    
+    private apiURL: string = EnvironmentConfig.getSettings().url
+    
     constructor(private httpClient: HttpClient) {
-        this.apiURL = EnvironmentConfig.getSettings().url
-     }
-
+    }
+    
     public async getApplications(status: string = undefined): Promise<IApplication[]> {
         try {
             let url = `${this.apiURL}/applications`
@@ -25,7 +24,7 @@ export class ApplicationService {
             return []
         }
     }
-
+    
     public async postApplication(application: FormData): Promise<IApplication> {
         try {
             const response = await this.httpClient.post(`${this.apiURL}/applications`, application, { observe: 'response' }).toPromise()
@@ -35,16 +34,18 @@ export class ApplicationService {
             return null
         }
     }
+    
+    public async updateApplicationStatus(data: { id, status }): Promise<IApplication> {
 
-    public async updateApplicationStatus(data: [number, string]): Promise<IApplication> {
+        const { id, status } = data
 
-        // console.log(data)
-
-        const response = await this.httpClient.put(`${this.apiURL}/applications/${data[1]}`, { id: data[1], status: data[0] }, { observe: 'response' }).toPromise()
-        const returnedApplication: IApplication = (<IApplication><unknown>response.body)
-
-        // console.log(returnedApplication)
-
-        return returnedApplication
+        try {
+            const response = await this.httpClient.put(`${this.apiURL}/applications/${id}`, { status: status }, { observe: 'response' }).toPromise()
+            const returnedApplication: IApplication = (<IApplication><unknown>response.body)
+            return returnedApplication
+        } catch {
+            return null
+        }
+        
     }
 }

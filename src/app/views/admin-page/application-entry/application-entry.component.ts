@@ -18,11 +18,13 @@ export class ApplicationEntryComponent implements OnInit {
 
   public apiURL = EnvironmentConfig.getSettings().url
 
-  @Output() statusButtonClick: EventEmitter<[string, number]> = new EventEmitter<[string, number]>()
+  @Output() statusButtonClick: EventEmitter<{ id: number, status: string }> = new EventEmitter()
 
   public setStatus(status: string) {
     if (this.applicationData.id) {
-      this.statusButtonClick.emit([status, this.applicationData.id])  
+      const id = this.applicationData.id
+      const data = { id, status}
+      this.statusButtonClick.emit(data)
     } else {
       alert('houve um erro de sincronização - isto não deveria acontecer.')
     }
