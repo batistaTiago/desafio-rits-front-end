@@ -36,13 +36,15 @@ export class ApplicationFormComponent implements OnInit {
 
   @ViewChild('applicationForm') applicationForm: ElementRef
 
-  @ViewChild('nameInput') nameInput: CustomInputComponent;
-  @ViewChild('emailInput') emailInput: CustomInputComponent;
-  @ViewChild('phoneInput') phoneInput: CustomInputComponent;
-  @ViewChild('linedinInput') linedinInput: CustomInputComponent;
-  @ViewChild('githubInput') githubInput: CustomInputComponent;
-  @ViewChild('nivelInglesInput') nivelInglesInput: CustomInputComponent;
-  @ViewChild('salarioInput') salarioInput: CustomInputComponent;
+  @ViewChild('nameInput') nameInput: CustomInputComponent
+  @ViewChild('emailInput') emailInput: CustomInputComponent
+  @ViewChild('phoneInput') phoneInput: CustomInputComponent
+  @ViewChild('linedinInput') linedinInput: CustomInputComponent
+  @ViewChild('githubInput') githubInput: CustomInputComponent
+  @ViewChild('nivelInglesInput') nivelInglesInput: CustomInputComponent
+  @ViewChild('salarioInput') salarioInput: CustomInputComponent
+
+  @ViewChild('coverLetterInput') coverLetterInput: CustomInputComponent
 
   private isValid(): boolean {
     let shaken: boolean = false
@@ -77,6 +79,7 @@ export class ApplicationFormComponent implements OnInit {
     formData.set('english_level_id', this.nivelInglesInput.getValue())
     formData.set('pretensaoSalarial', this.salarioInput.getValue())
     formData.set('telefone', this.phoneInput.getValue())
+    formData.set('coverLetter', this.coverLetterInput.getValue())
 
     return formData
   }

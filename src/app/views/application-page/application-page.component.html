@@ -22,7 +22,7 @@
 </div>
 
 <app-application-form 
-class="{{ (showFeedback === undefined && postingApplication === false) ? '' : 'bt-hidden-element' }}"
+class="{{ (!showFeedback && postingApplication === false) ? '' : 'bt-hidden-element' }}"
 (formSubmitted)="formSubmitted($event)"
 (postResult)="parsePostResult($event)"
 ></app-application-form>

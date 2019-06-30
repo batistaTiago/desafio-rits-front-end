@@ -1,7 +1,7 @@
 <header>
   <app-header-logo></app-header-logo>
   
-  <button class="navbar-toggler-button" (click)="toggleMenu()">
+  <button class="navbar-toggler-button {{ showMenu ? 'toggled' : '' }}" (click)="toggleMenu()">
     <div class="menu-bar"></div>
     <div class="menu-bar"></div>
     <div class="menu-bar"></div>

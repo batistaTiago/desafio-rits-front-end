@@ -74,6 +74,10 @@ ul {
         background: white;
         border-radius: 3px;
         
+        transition-property: transform, opacity;
+        transition: 0.25s ease-in-out;
+        transform-origin: center right;
+
     }
     
     div.menu-bar:last-child {
@@ -81,6 +85,25 @@ ul {
     }
     
     
+}
+
+.navbar-toggler-button.toggled {
+
+    padding-right: 13px;
+    padding-left: 7px;
+
+    div.menu-bar:first-child {
+        transform: rotate(-45deg) translate(1px, -3px);
+    }
+
+    div.menu-bar:nth-child(2) {
+        transform: scaleX(0.2);
+        opacity: 0;
+    }
+
+    div.menu-bar:last-child {
+        transform: rotate(45deg) translate(1px, 3px);
+    }
 }
 
 @media (min-width: 576px) {
