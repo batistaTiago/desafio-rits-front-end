@@ -5,7 +5,7 @@
       <app-header-logo></app-header-logo>
 
       <div style="color: white">
-        <span *ngIf="user">Bem vindo, <span style="margin-right:">{{ user.name }}</span></span>
+        <span *ngIf="user">Bem vindo, <span>{{ user.name }}</span></span>
         <button (click)="logoutButtonClick()"><i class="fas fa-power-off"></i> Sair</button>
       </div>
       
@@ -24,12 +24,16 @@
     </div>
 
 
-    <div class="applications-root" *ngIf="!fetchingApplications && applications.length > 0">
+    <div class="applications-root" *ngIf="!fetchingApplications && applications && applications.length > 0">
       <app-application-entry (statusButtonClick)="updateApplicationStatus($event)"
         *ngFor="let application of applications" [applicationData]="application"></app-application-entry>
     </div>
 
     <app-loading-spinner *ngIf="fetchingApplications"></app-loading-spinner>
+
+    <h3 *ngIf="!fetchingApplications && !applications">
+        Não foi possível conectar com o servidor, tente novamente. Se o problema persistir, tente mais tarde.
+    </h3>
 
     <h3 *ngIf="!fetchingApplications && applications.length === 0">
       Nenhuma aplicação foi encontrada para o filtro selecionado

@@ -16,6 +16,7 @@ export class AppRoutingModule {
   public static routes: Routes = [
     { path: '', component: ApplicationPage },
     { path: 'login', component: LoginPage },
-    { path: 'admin', component: AdminPage, canActivate: [ AuthService ] }
+    { path: 'admin', component: AdminPage, canActivate: [ AuthService ] },
+    { path: '**', component: ApplicationPage }
   ]
  }

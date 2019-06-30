@@ -1,16 +1,17 @@
 <section id="login">
+  <div class="container">
+    <div *ngIf="showInvalidCredentialsFeedback" class="invalid-credentials-container">
+      <h3 style="color: white">Login ou senha inválidos</h3>
+    </div>
+    
+    <app-loading-spinner *ngIf="sendingData"></app-loading-spinner>
 
-  <div *ngIf="showInvalidCredentialsFeedback" class="invalid-credentials-container">
-    <h3 style="color: white">Login ou senha inválidos</h3>
+    <form (submit)="submitLogin($event)" class="{{ sendingData ? 'bt-hidden-element' : '' }}">
+        <app-header-logo></app-header-logo>
+      <app-custom-input #emailInput inputType="email" placeholderText="E-MAIL" [shouldValidate]=false></app-custom-input>
+      <app-custom-input #passwordInput inputType="password" placeholderText="SENHA" [shouldValidate]=false>
+      </app-custom-input>
+      <button type="submit">Login</button>
+    </form>
   </div>
-
-  <app-loading-spinner *ngIf="sendingData"></app-loading-spinner>
-
-  <form (submit)="submitLogin($event)" class="container {{ sendingData ? 'bt-hidden-element' : '' }}">
-    <app-header-logo></app-header-logo>
-    <app-custom-input #emailInput inputType="email" placeholderText="E-MAIL" [shouldValidate]=false></app-custom-input>
-    <app-custom-input #passwordInput inputType="password" placeholderText="SENHA" [shouldValidate]=false>
-    </app-custom-input>
-    <button type="submit">Login</button>
-  </form>
 </section>

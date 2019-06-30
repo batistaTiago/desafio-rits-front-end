@@ -1,15 +1,16 @@
-import { Router, CanActivate } from "@angular/router"
+import { Router, CanActivate, ActivatedRoute } from "@angular/router"
 import { Injectable } from "@angular/core"
 import { HttpClient } from '@angular/common/http'
 import { EnvironmentConfig } from "../shared/environment.config";
-import { IAuthToken, AuthToken } from "../shared/auth-token";
+import { AuthToken } from "../shared/auth-token";
+import { IAuthToken } from "../shared/auth-token.interface";
 
 @Injectable()
 export class AuthService implements CanActivate {
 
     private apiURL = EnvironmentConfig.getSettings().url
 
-    constructor (private router: Router, private httpClient: HttpClient) { }
+    constructor (private router: Router, private httpClient: HttpClient, private activatedRoute: ActivatedRoute) { }
 
     public canActivate(): boolean {
         if (AuthToken.getToken()) {
@@ -22,12 +23,11 @@ export class AuthService implements CanActivate {
     public async authenticate(email: string, password: string): Promise<IAuthToken> {
         try {
             const serverResponse: any = await this.httpClient.post(`${this.apiURL}/login`, { email, password }).toPromise()
-            const token = AuthToken.setToken({ 
+            const token = {
                 token: serverResponse.access_token, 
-                tokenType: serverResponse.token_type, 
-                tokenDuration: serverResponse.expires_in 
-            })
-            this.router.navigate(['/admin'])
+                tokenType: serverResponse.token_type
+            }
+            AuthToken.setToken(token)
             return token
         } catch (error) {
             return null
@@ -35,13 +35,20 @@ export class AuthService implements CanActivate {
     }
 
     public async me() {
-        const url = `${this.apiURL}/me`
-        const token = AuthToken.getToken().token
-        const response = await this.httpClient.get(url, { headers: { 'Authorization': `bearer ${token}` }}).toPromise()
-        return response
+        try {
+            const url = `${this.apiURL}/me`
+            const token = AuthToken.getToken().token
+            const response = await this.httpClient.get(url, { headers: { 'Authorization': `bearer ${token}` }}).toPromise()
+            return response
+        } catch (error) {
+            console.log(error)
+            this.router.navigate['/login']
+        }
+        
     }
 
     public async logout() {
+
         try {
             const url = `${this.apiURL}/logout`
             const token = AuthToken.getToken().token

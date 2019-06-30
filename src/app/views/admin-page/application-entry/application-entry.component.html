@@ -1,9 +1,15 @@
 <div class="application-container">
+
+    <div class="field-container">
+        <div class="field-title">Nome: </div> <div class="field-value"> {{ applicationData.nomeCompleto }}</div>
+    </div>
+
+<!-- 
     <span>Nome: </span> <span>{{ applicationData.nomeCompleto }}</span>
     <span>Telefone: </span> <span>{{ applicationData.telefone }}</span>
     <span>Email: </span> <a [href]="applicationData.email">{{ applicationData.email }}</a>
-    <span>Github: </span> <a [href]="applicationData.githubURL">{{ applicationData.githubURL }}</a>
-    <span>LinkedIn: </span> <a [href]="applicationData.linkedinURL">{{ applicationData.linkedinURL }}</a>
+    <span>Github: </span> <a [href]="applicationData.githubURL"><i class="fas fa-link"></i> Link</a>
+    <span>LinkedIn: </span> <a [href]="applicationData.linkedinURL"><i class="fas fa-link"></i> Link</a>
     <span>Nível de inglês: </span> <span>{{ applicationData.english_level.nivelIngles }}</span>
     <span>Pretensão salarial: </span> <span>R$ {{ applicationData.pretensaoSalarial }}</span>
     <span>Currículo: </span> <button class="download-button" (click)="downloadResume()"><i
@@ -11,7 +17,7 @@
 
     <div *ngIf="applicationData.coverLetter">
         <span>Motivação: </span> <span style="font-size: 12px;">{{ applicationData.coverLetter }}</span>
-    </div>
+    </div> -->
 
     <span>Status: </span> <span>{{ applicationData.application_status.status.toUpperCase() }}</span>
 

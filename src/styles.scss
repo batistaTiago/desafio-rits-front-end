@@ -46,9 +46,9 @@ a.bt-btn {
 
 .spinner {
     border-radius: 50%;
-
+    
     border: 8px solid;
-
+    
     border-top-color: $main-green-color;
     border-bottom-color: $main-green-color;
     border-left-color: $main-purple-color;
@@ -77,14 +77,30 @@ a.bt-btn {
     transform: scale(0);
 }
 
+app-custom-input {
+    width: 100%;
+}
+
 .container {
     margin-left: auto;
     margin-right: auto;
-    width: 1136px;
+    width: auto;
+    display: block;
 }
 
 @media (max-width: 768px) {
     .container {
-        width: 700px;
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1136px;
     }
 }

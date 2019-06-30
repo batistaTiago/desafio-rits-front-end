@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IApplication } from '../../shared/application.interface';
 import { ApplicationService } from '../../services/application.service';
 import { AuthService } from '../../services/auth.service';
+import { AuthToken } from '../../shared/auth-token';
+import { IUser } from '../../shared/user.interface';
 
 @Component({
   selector: 'app-admin-page',
@@ -16,13 +18,11 @@ export class AdminPage implements OnInit {
 
   public fetchingApplications: boolean = true
 
-  public user: { }
+  public user: IUser = AuthToken.getUser()
 
   constructor(private applicationService: ApplicationService, private authService: AuthService) { }
 
-  async ngOnInit() {
-    this.user = await this.authService.me()
-    console.log(this.user)
+  ngOnInit() {
     this.updateApplications()
   }
 
@@ -33,9 +33,12 @@ export class AdminPage implements OnInit {
     this.updateApplications()
   }
 
-  public async updateApplications() {
-    this.applications = await this.applicationService.getApplications(this.statusFilter)
-    console.log(this.applications)
+  public async updateApplications(applications: IApplication[] = null) {
+    if (applications) {
+      this.applications = applications
+    } else {
+      this.applications = await this.applicationService.getApplications(this.statusFilter)
+    }
     this.fetchingApplications = false
   }
 

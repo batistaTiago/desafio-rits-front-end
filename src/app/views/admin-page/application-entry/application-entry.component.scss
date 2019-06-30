@@ -7,66 +7,81 @@
     padding: 25px;
     margin-bottom: 10px;
     margin-left: 10px;
-
-    span:nth-child(odd) {
-        color: white;
-    }
-
-    span:nth-child(even), a, .download-button {
-        color: $main-green-color;
-        display: block;
-        margin-left: 10px;
-        margin-top: 5px;
-        margin-bottom: 15px;
-        font-weight: bold;
-    }
-
-    .download-button {
-        background-color: transparent;
-        border: none;
-        padding: 5px;
-        margin-left: 10px;
-        cursor: pointer;
-        text-transform: uppercase;
-        font-size: 14px;
-        i {
-            margin-right: 10px;
-        }
-    }
-
-    .buttons-container {
+    
+    .field-container {
+        width: 100%;
         display: flex;
         flex-direction: column;
-
-        hr {
+    }
+    
+    // .field-value {
+        //     color: $main-green-color;
+        //     display: block;
+        //     margin-left: 10px;
+        //     margin-top: 5px;
+        //     margin-bottom: 15px;
+        //     font-weight: bold;
+        // }
+        
+        .field-title {
             color: white;
-            margin: 10px 0;
         }
-
-        h3 {
-            color: white;
-            margin-bottom: 5px;
-            text-align: center;
-        }
-
-        button {
-            padding: 5px 15px;
-            margin-bottom: 5px;
-            border-radius: 5px;
-            border: solid white;
-            cursor: pointer;
-            color: $main-dark-color;
+        
+        .field-value, a, .download-button {
+            color: $main-green-color;
+            display: block;
+            margin-left: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
             font-weight: bold;
         }
-
-        .processamento {
-            background: yellow;
+        
+        .download-button {
+            background-color: transparent;
+            border: none;
+            padding: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 14px;
+            i {
+                margin-right: 10px;
+            }
         }
-        .aceitar {
-            background: $main-green-color;
-        }
-        .rejeitar {
-            background: $main-red-color;
+        
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            
+            hr {
+                color: white;
+                margin: 10px 0;
+            }
+            
+            h3 {
+                color: white;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+            
+            button {
+                padding: 5px 15px;
+                margin-bottom: 5px;
+                border-radius: 5px;
+                border: solid white;
+                cursor: pointer;
+                color: $main-dark-color;
+                font-weight: bold;
+            }
+            
+            .processamento {
+                background: yellow;
+            }
+            .aceitar {
+                background: $main-green-color;
+            }
+            .rejeitar {
+                background: $main-red-color;
+            }
         }
     }
-}

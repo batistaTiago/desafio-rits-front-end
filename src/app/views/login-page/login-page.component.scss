@@ -3,20 +3,20 @@
 #login {
     position: relative;
     height: 100vh;
+    width: 100%;
     background-image: url('../../../assets/views/hero/alex-kotliarskyi-361081-unsplash-e1533783277923.jpg');
-    background-size: cover;
+    background-size: 100% 100%;
     
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    
     .invalid-credentials-container {
         background: red; 
         padding: 5px 25px;
         border-radius: 15px;
         z-index: 1;
-
+        
         margin-bottom: 15px;
     }
     
@@ -27,7 +27,7 @@
         box-shadow: 1px 1px 10px white;
         margin-bottom: 15px;
     }
-
+    
     .container {
         z-index: 1;
         
@@ -36,18 +36,10 @@
         justify-content: center;
         align-items: center;
         
-        app-header-logo {
-            margin-bottom: 25px;
-        }
-        
-        app-custom-input {
-            margin-top: 15px;
-        }
-
         button {
             margin-top: 15px;
             background-color: $main-green-color;
-
+            
             padding: 12px 50px;
             border-radius: 20px;
             color: $main-dark-color;
@@ -58,6 +50,23 @@
             cursor: pointer;
         }
         
+    }
+    
+    form {
+        width: 300px;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        app-header-logo {
+            margin-bottom: 25px;
+        }
+        
+        app-custom-input {
+            margin-top: 15px;
+        }
     }
 }
 
@@ -72,3 +81,18 @@
     opacity: 0.95;
 }
 
+@media (min-width: 576px) {
+    #login {
+        form {
+            width: 400px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    #login {
+        form {
+            width: 560px;
+        }
+    }
+}

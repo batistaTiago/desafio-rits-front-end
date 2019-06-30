@@ -16,6 +16,9 @@ app-footer {
 }
 
 .feedback-container {
+    
+    width: 100%;
+    
     div {
         display: flex;
         flex-direction: column;
@@ -25,28 +28,46 @@ app-footer {
         margin-top: 150px;
         margin-bottom: 150px;
         
+        background: red;
+        
         h2 {
-            font-size: 5em;
+            font-size: 3em;
             font-weight: 900;
             letter-spacing: 1px;
             margin-bottom: 10px;
             text-shadow: 1px 1px 4px $main-dark-color;
         }
-
+        
         h2.success {
             color: $main-green-color;
         }
-
+        
         h2.fail {
             color: $main-red-color;
         }
         
         p {
             letter-spacing: 0.75px;
-            font-size: 1.5em;
+            font-size: 1em;
             color: $main-dark-color;
             text-align: justify;
             width: 85%;
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+    .feedback-container {
+        
+        div {
+            h2 {
+                font-size: 5em;
+            }
+            
+            p {
+                font-size: 1.5em;
+            }
         }
     }
 }

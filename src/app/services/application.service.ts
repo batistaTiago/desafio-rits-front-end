@@ -26,7 +26,7 @@ export class ApplicationService {
             return returnedApplications
         } catch (error) {
             console.log(error)
-            return []
+            return null
         }
     }
     
@@ -35,7 +35,8 @@ export class ApplicationService {
             const response = await this.httpClient.post(`${this.apiURL}/applications`, application, { observe: 'response' }).toPromise()
             const returnedApplication: IApplication = (<IApplication><unknown>response.body)
             return returnedApplication
-        } catch {
+        } catch (error) {
+            console.log(error)
             return null
         }
     }
@@ -48,7 +49,8 @@ export class ApplicationService {
             const response = await this.httpClient.put(`${this.apiURL}/applications/${id}`, { status: status }, { observe: 'response' }).toPromise()
             const returnedApplication: IApplication = (<IApplication><unknown>response.body)
             return returnedApplication
-        } catch {
+        } catch (error) {
+            console.log(error)
             return null
         }
         
