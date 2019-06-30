@@ -25,8 +25,14 @@ export class ApplicationService {
             const returnedApplications: IApplication[] = (<IApplication[]><unknown>response)
             return returnedApplications
         } catch (error) {
-            console.log(error)
-            return null
+            if (error.status === 401) {
+                console.log('Unauthorized!!!!')
+                return null
+            } else {
+                console.log(error)
+                return null
+            }
+            
         }
     }
     

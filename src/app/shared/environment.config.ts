@@ -1,6 +1,6 @@
 export class EnvironmentConfig {
-    private static apiURL: string = 'http://localhost:3000/api'
-    private static baseURL: string = 'http://localhost:3000'
+    private static apiURL: string = 'http://localhost:8000/api'
+    private static baseURL: string = 'http://localhost:8000'
 
     public static getSettings() {
         return {

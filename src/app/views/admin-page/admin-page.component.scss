@@ -64,6 +64,12 @@ h3 {
     text-align: center;
 }
 
+span.user-name {
+    font-weight: bold;
+    margin-right: 15px;
+    color: $main-green-color;
+}
+
 app-application-entry {
     width: 30%;
     // flex-grow: 0;

@@ -14,74 +14,65 @@
         flex-direction: column;
     }
     
-    // .field-value {
-        //     color: $main-green-color;
-        //     display: block;
-        //     margin-left: 10px;
-        //     margin-top: 5px;
-        //     margin-bottom: 15px;
-        //     font-weight: bold;
-        // }
+    span:nth-child(odd) {
+        color: white;
+    }
+
+    span:nth-child(even), a, .download-button {
+        color: $main-green-color;
+        display: block;
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .download-button {
+        background-color: transparent;
+        border: none;
+        padding: 5px;
+        margin-left: 10px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 14px;
+        i {
+            margin-right: 10px;
+        }
+    }
+    
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
         
-        .field-title {
+        hr {
             color: white;
+            margin: 10px 0;
         }
         
-        .field-value, a, .download-button {
-            color: $main-green-color;
-            display: block;
-            margin-left: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
+        h3 {
+            color: white;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        button {
+            padding: 5px 15px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            border: solid white;
+            cursor: pointer;
+            color: $main-dark-color;
             font-weight: bold;
         }
         
-        .download-button {
-            background-color: transparent;
-            border: none;
-            padding: 5px;
-            margin-left: 10px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 14px;
-            i {
-                margin-right: 10px;
-            }
+        .processamento {
+            background: yellow;
         }
-        
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            
-            hr {
-                color: white;
-                margin: 10px 0;
-            }
-            
-            h3 {
-                color: white;
-                margin-bottom: 5px;
-                text-align: center;
-            }
-            
-            button {
-                padding: 5px 15px;
-                margin-bottom: 5px;
-                border-radius: 5px;
-                border: solid white;
-                cursor: pointer;
-                color: $main-dark-color;
-                font-weight: bold;
-            }
-            
-            .processamento {
-                background: yellow;
-            }
-            .aceitar {
-                background: $main-green-color;
-            }
-            .rejeitar {
-                background: $main-red-color;
-            }
+        .aceitar {
+            background: $main-green-color;
+        }
+        .rejeitar {
+            background: $main-red-color;
         }
     }
+}
