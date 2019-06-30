@@ -6,7 +6,7 @@
     <span>LinkedIn: </span> <a [href]="applicationData.linkedinURL">{{ applicationData.linkedinURL }}</a>
     <span>Nível de inglês: </span> <span>{{ applicationData.english_level.nivelIngles }}</span>
     <span>Pretensão salarial: </span> <span>R$ {{ applicationData.pretensaoSalarial }}</span>
-    <span>Currículo: </span> <a target="_download" href="{{apiURL}}/download/{{ applicationData.id }}"><i class="fas fa-link"></i>Download</a>
+    <span>Currículo: </span> <button class="download-button" (click)="downloadResume()"><i class="fas fa-link"></i>Download</button>
 
     <span>Status: </span> <span>{{ applicationData.application_status.status.toUpperCase() }}</span>
 

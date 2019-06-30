@@ -8,6 +8,8 @@ $box-shadow-params: 0px 0px 5px;
     display: flex;
     flex-direction: column;
 
+    width: 100%;
+
     span {
         position: absolute;
         top: 10px;
@@ -38,7 +40,7 @@ $box-shadow-params: 0px 0px 5px;
         letter-spacing: -0.025em;
 
         margin-bottom: 10px;
-        width: 560px;
+        width: 100%;
         
         position: relative;
         padding-left: $left-distance;
@@ -68,6 +70,7 @@ $box-shadow-params: 0px 0px 5px;
 .root.shake-animation {
     animation: shakeAnimation 0.5s linear 1 forwards;
 }
+
 
 
 @keyframes shakeAnimation {

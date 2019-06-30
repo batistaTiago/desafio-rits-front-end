@@ -4,6 +4,12 @@
 
       <app-header-logo></app-header-logo>
 
+      <div style="color: white">
+        <span *ngIf="user">Bem vindo, <span style="margin-right:">{{ user.name }}</span></span>
+        <button (click)="logoutButtonClick()"><i class="fas fa-power-off"></i> Sair</button>
+      </div>
+      
+
     </header>
 
     <div class="status-filter-selection">

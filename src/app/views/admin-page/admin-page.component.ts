@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IApplication } from '../../shared/application.interface';
 import { ApplicationService } from '../../services/application.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -15,9 +16,13 @@ export class AdminPage implements OnInit {
 
   public fetchingApplications: boolean = true
 
-  constructor(private applicationService: ApplicationService) { }
+  public user: { }
 
-  ngOnInit() {
+  constructor(private applicationService: ApplicationService, private authService: AuthService) { }
+
+  async ngOnInit() {
+    this.user = await this.authService.me()
+    console.log(this.user)
     this.updateApplications()
   }
 
@@ -39,7 +44,9 @@ export class AdminPage implements OnInit {
     this.applicationService.updateApplicationStatus(eventData)
   }
   
-
+  public logoutButtonClick() {
+    this.authService.logout()
+  }
    
 
 }

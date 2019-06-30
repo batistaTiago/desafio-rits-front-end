@@ -16,6 +16,8 @@ import { AdminPage } from './views/admin-page/admin-page.component';
 import { HeaderLogoComponent } from './views/header-logo/header-logo.component';
 import { ApplicationEntryComponent } from './views/admin-page/application-entry/application-entry.component';
 import { LoadingSpinnerComponent } from './views/loading-spinner/loading-spinner.component';
+import { AuthService } from './services/auth.service';
+import { LoginPage } from './views/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +31,18 @@ import { LoadingSpinnerComponent } from './views/loading-spinner/loading-spinner
     AdminPage,
     HeaderLogoComponent,
     ApplicationEntryComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(AppRoutingModule.routes)
   ],
-  providers: [ HttpClientModule ],
+  providers: [ 
+    HttpClientModule,
+    AuthService
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

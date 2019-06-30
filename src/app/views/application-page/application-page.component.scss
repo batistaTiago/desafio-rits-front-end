@@ -1,5 +1,10 @@
 @import '../variables.scss';
 
+app-hero {
+    width: 100%;
+}
+
+
 app-application-form {
     display: flex;
     justify-content: center;
@@ -43,5 +48,4 @@ app-footer {
             text-align: justify;
         }
     }
-    
 }

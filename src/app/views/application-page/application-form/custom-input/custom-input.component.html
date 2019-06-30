@@ -1,21 +1,23 @@
 <div #rootElement class="root {{ isShaking ? 'shake-animation' : '' }}" (animationend)="resetAnimationTrigger()">
     <span>{{ placeholderText }}</span>
 
-    <input type="text" *ngIf="inputType === 'text'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
+    <input type="text" *ngIf="inputType === 'text'" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
-    <input type="number" *ngIf="inputType === 'number'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
+    <input type="number" *ngIf="inputType === 'number'" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
-    <input type="number" *ngIf="inputType === 'money'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)" min="1" step="any">
+    <input type="number" *ngIf="inputType === 'money'" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)" min="1" step="any">
 
-    <input type="email" *ngIf="inputType === 'email'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
+    <input type="email" *ngIf="inputType === 'email'" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
-    <input type="url" *ngIf="inputType === 'url'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
+    <input type="url" *ngIf="inputType === 'url'" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
-    <input type="tel" *ngIf="inputType === 'tel'" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
+    <input type="tel" *ngIf="inputType === 'tel'" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
-    <textarea *ngIf="inputType === 'textarea'" class="{{ pristine || !shouldValidate ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)"></textarea>
+    <input type="password" *ngIf="inputType === 'password'" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)">
 
-    <select (change)="onSelectChange($event)" class="{{ pristine ? '' : (isValid() ? 'valid' : 'invalid') }}" *ngIf="inputType === 'select' && selectOptions && selectOptions.length > 0">
+    <textarea *ngIf="inputType === 'textarea'" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" (input)="onUserInput($event)"></textarea>
+
+    <select (change)="onSelectChange($event)" class="{{ pristine || (shouldValidate === false) ? '' : (isValid() ? 'valid' : 'invalid') }}" *ngIf="inputType === 'select' && selectOptions && selectOptions.length > 0">
         <option *ngFor="let option of selectOptions; let i = index" [value]=i>{{ option }}</option>
     </select>
     

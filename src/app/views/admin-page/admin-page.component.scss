@@ -13,8 +13,23 @@
 
 header {
     background-color: $main-purple-color;
+    padding: 15px;
     display: flex;
-    justify-content: center
+    justify-content: space-around;
+
+    button {
+        padding: 10px;
+        cursor: pointer;
+        background-color: $main-red-color;
+        font-size: 1.25em;
+        border-radius: 10px;
+        border-style: none;
+        color: white;
+        box-shadow: 0px 1px 5px white;
+        i {
+            margin-right: 5px;
+        }
+    }
 }
 
 .status-filter-selection {

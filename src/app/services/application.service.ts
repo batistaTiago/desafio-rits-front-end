@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { IApplication } from "../shared/application.interface";
 import { HttpClient } from "@angular/common/http"
 import { EnvironmentConfig } from "../shared/environment.config"
+import { AuthToken } from "../shared/auth-token";
 
 @Injectable()
 export class ApplicationService {
@@ -17,10 +18,14 @@ export class ApplicationService {
             if (status) {
                 url += `?status=${status}`
             }
-            const response = await this.httpClient.get(url).toPromise()
+
+            const token = AuthToken.getToken().token
+
+            const response = await this.httpClient.get(url, { headers: { 'Authorization': `bearer ${token}` }}).toPromise()
             const returnedApplications: IApplication[] = (<IApplication[]><unknown>response)
             return returnedApplications
-        } catch {
+        } catch (error) {
+            console.log(error)
             return []
         }
     }

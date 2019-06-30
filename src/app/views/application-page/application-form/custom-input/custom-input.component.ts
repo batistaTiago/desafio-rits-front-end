@@ -12,7 +12,7 @@ export class CustomInputComponent implements OnInit {
 
   @Input() inputType: InputTypes = null
   @Input() placeholderText: string = null
-  @Input() shouldValidate: boolean = false
+  @Input() shouldValidate: boolean = true
   @Input() selectOptions: string[] = null
   @Input() errorText: string = 'Campo inválido'
 
@@ -100,5 +100,6 @@ enum InputTypes {
   Area = 'textarea',
   URL = 'url',
   Select = 'select',
-  Money = 'money'
+  Money = 'money',
+  Password = 'password'
 }

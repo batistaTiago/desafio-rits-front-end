@@ -1,15 +1,25 @@
-<nav>
-  <ul>
-    <li>
-      <a href="">A RITS</a>
-    </li>
-    
-    <li>
-      <a href="">NOSSOS VALORES</a>
-    </li>
-    
-    <li>
-      <a href="" class="bt-btn">VAGAS ABERTAS</a>
-    </li>
-  </ul>
-</nav>
+<header>
+  <app-header-logo></app-header-logo>
+  
+  <button class="navbar-toggler-button" (click)="toggleMenu()">
+    <div class="menu-bar"></div>
+    <div class="menu-bar"></div>
+    <div class="menu-bar"></div>
+  </button>
+  
+  <nav class="{{ showMenu ? 'visible' : '' }}">
+    <ul>
+      <li>
+        <a href="">A RITS</a>
+      </li>
+      
+      <li>
+        <a href="">NOSSOS VALORES</a>
+      </li>
+      
+      <li>
+        <a href="" class="bt-btn">VAGAS ABERTAS</a>
+      </li>
+    </ul>
+  </nav>
+</header>

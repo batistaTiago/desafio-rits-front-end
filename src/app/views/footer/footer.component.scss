@@ -6,6 +6,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -28,12 +29,17 @@ footer {
 }
 
 #footer-center-content {
-    width: 560px;
+    flex-basis: 320px;
+    flex-grow: 1;
     height: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    order: 1;
+    margin-top: 25px;
+
     span {
         display: block;
         text-align: center;
@@ -53,4 +59,17 @@ footer {
 a {
     font-weight: 900;
     color: $main-green-color;
+}
+
+@media (min-width: 576px) {
+    #footer-center-content {
+        flex-basis: 560px;
+    }
+}
+
+@media (min-width: 768px) {
+    #footer-center-content {
+        order: unset;
+        margin-top: 0;
+    }
 }
