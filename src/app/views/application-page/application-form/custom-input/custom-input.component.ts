@@ -31,33 +31,33 @@ export class CustomInputComponent implements OnInit {
   }
 
   public isValid(): boolean {
-    // if (this.inputType === InputTypes.Text) {
-    //   return FormValidator.validateFullName(this.inputValue)
-    // }
+    if (this.inputType === InputTypes.Text) {
+      return FormValidator.validateFullName(this.inputValue)
+    }
 
-    // if (this.inputType === InputTypes.Money) {
-    //   return FormValidator.validateSalary(this.inputValue)
-    // }
+    if (this.inputType === InputTypes.Money) {
+      return FormValidator.validateSalary(this.inputValue)
+    }
 
-    // if (this.inputType === InputTypes.Email) {
-    //   return FormValidator.validateEmail(this.inputValue)
-    // }
+    if (this.inputType === InputTypes.Email) {
+      return FormValidator.validateEmail(this.inputValue)
+    }
 
-    // if (this.inputType === InputTypes.Phone) {
-    //   return FormValidator.validatePhoneNumber(this.inputValue)
-    // }
+    if (this.inputType === InputTypes.Phone) {
+      return FormValidator.validatePhoneNumber(this.inputValue)
+    }
 
-    // if (this.inputType === InputTypes.Area) {
-    //   return FormValidator.validateText(this.inputValue)
-    // }
+    if (this.inputType === InputTypes.Area) {
+      return FormValidator.validateText(this.inputValue)
+    }
 
-    // if (this.inputType === InputTypes.URL) {
-    //   return FormValidator.validateURL(this.inputValue)
-    // }
+    if (this.inputType === InputTypes.URL) {
+      return FormValidator.validateURL(this.inputValue)
+    }
 
-    // if (this.inputType === InputTypes.Select) {
-    //   return FormValidator.validateEnglishLevel(this.inputValue)
-    // }
+    if (this.inputType === InputTypes.Select) {
+      return FormValidator.validateEnglishLevel(this.inputValue)
+    }
 
     return true
   }

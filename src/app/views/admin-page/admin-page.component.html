@@ -25,7 +25,8 @@
 
 
     <div class="applications-root" *ngIf="!fetchingApplications && applications && applications.length > 0">
-      <app-application-entry (statusButtonClick)="updateApplicationStatus($event)"
+      <app-application-entry 
+        (statusButtonClick)="updateApplicationStatus($event)"
         *ngFor="let application of applications" [applicationData]="application"></app-application-entry>
     </div>
 

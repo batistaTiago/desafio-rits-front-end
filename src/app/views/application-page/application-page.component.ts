@@ -15,7 +15,7 @@ export class ApplicationPage implements OnInit {
   ngOnInit() {
   }
 
-  public formSubmitted() {
+  public formSubmitted(event: Event) {
     this.postingApplication = true
   }
 

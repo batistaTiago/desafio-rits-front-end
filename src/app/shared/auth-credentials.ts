@@ -1,7 +1,7 @@
 import { IUser } from "./user.interface";
 import { IAuthToken } from "./auth-token.interface";
 
-export class AuthToken {
+export class AuthCredentials {
     private static tokenData: IAuthToken
     private static userData: IUser
 
@@ -32,12 +32,10 @@ export class AuthToken {
         return this.userData
     }
 
-    public static forgetUser() {
+    private static forgetUser() {
         sessionStorage.removeItem('user')
         this.userData = undefined
     }
-
-
 
 
     public static setToken(token: IAuthToken): void {
@@ -49,6 +47,7 @@ export class AuthToken {
         if (this.tokenData) {
             sessionStorage.setItem('token', this.tokenData.token)
             sessionStorage.setItem('tokenType', this.tokenData.tokenType)
+            sessionStorage.setItem('tokenDuration', String(this.tokenData.tokenDuration))
         } else {
             throw 'Token não setado'
         }
@@ -58,17 +57,23 @@ export class AuthToken {
         if (!this.tokenData) {
             const token = sessionStorage.getItem('token')
             const tokenType = sessionStorage.getItem('tokenType')
+            const tokenDuration = Number(sessionStorage.getItem('tokenDuration'))
             if (token && tokenType) {
-                this.setToken({ token, tokenType })
+                this.setToken({ token, tokenType, tokenDuration })
             }
         }
         return this.tokenData
     }
 
-    public static forgetToken() {
+    private static forgetToken() {
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('tokenType')
         this.tokenData = undefined
+    }
+
+    public static forgetData() {
+        this.forgetToken()
+        this.forgetUser()
     }
 
 }

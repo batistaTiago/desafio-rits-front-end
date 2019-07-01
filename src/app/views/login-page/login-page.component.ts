@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CustomInputComponent } from '../application-page/application-form/custom-input/custom-input.component';
-import { AuthToken } from '../../shared/auth-token';
+import { AuthCredentials } from '../../shared/auth-credentials';
 import { Router } from '@angular/router';
 import { IUser } from '../../shared/user.interface';
 import { IAuthToken } from '../../shared/auth-token.interface';
@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
   
   ngOnInit() {
-    AuthToken.forgetToken()
+    AuthCredentials.forgetData()
   }
   
   public async submitLogin(event: Event) {
@@ -35,17 +35,16 @@ export class LoginPage implements OnInit {
     if (result) {
       const userData = await this.authService.me()
       if (userData) {
-        AuthToken.setUser(<IUser><unknown>userData)
+        AuthCredentials.setUser(<IUser><unknown>userData)
       }
     }
 
     this.sendingData = false
 
-    if (AuthToken.getUser()) {
+    if (AuthCredentials.getUser()) {
       this.router.navigate(['/admin'])
     } else { 
-      AuthToken.forgetToken()
-      AuthToken.forgetUser()
+      AuthCredentials.forgetData()
       this.showInvalidCredentialsFeedback = true
     }
 

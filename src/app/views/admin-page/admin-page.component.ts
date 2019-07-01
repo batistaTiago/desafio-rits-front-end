@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IApplication } from '../../shared/application.interface';
 import { ApplicationService } from '../../services/application.service';
 import { AuthService } from '../../services/auth.service';
-import { AuthToken } from '../../shared/auth-token';
+import { AuthCredentials } from '../../shared/auth-credentials';
 import { IUser } from '../../shared/user.interface';
 
 @Component({
@@ -18,7 +18,7 @@ export class AdminPage implements OnInit {
 
   public fetchingApplications: boolean = true
 
-  public user: IUser = AuthToken.getUser()
+  public user: IUser = AuthCredentials.getUser()
 
   constructor(private applicationService: ApplicationService, private authService: AuthService) { }
 
@@ -46,7 +46,7 @@ export class AdminPage implements OnInit {
   public updateApplicationStatus(eventData: { id: number, status: string }) {
     this.applicationService.updateApplicationStatus(eventData)
   }
-  
+
   public logoutButtonClick() {
     this.authService.logout()
   }
