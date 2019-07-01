@@ -12,8 +12,9 @@ import { ApplicationService } from '../../../services/application.service';
 export class ApplicationFormComponent implements OnInit {
 
   public inputs: CustomInputComponent[] = []
-
+  
   public resumeFile: File = null
+  public fileWasValidated: boolean = false
 
   constructor(private applicationService: ApplicationService) { }
 
@@ -21,7 +22,6 @@ export class ApplicationFormComponent implements OnInit {
 
   @Output() postResult: EventEmitter<any> = new EventEmitter()
   
-
   ngOnInit() {
     this.inputs = [
       this.nameInput,
@@ -47,6 +47,7 @@ export class ApplicationFormComponent implements OnInit {
   @ViewChild('coverLetterInput') coverLetterInput: CustomInputComponent
 
   private isValid(): boolean {
+
     let shaken: boolean = false
 
     const validInputs = this.inputs.filter(
@@ -65,7 +66,7 @@ export class ApplicationFormComponent implements OnInit {
       }
     )
 
-    return (this.inputs.length === validInputs.length) && (this.fileIsValid())
+    return (this.inputs.length === validInputs.length) && this.fileIsValid()
   }
 
   private buildFormRequest(): FormData {
@@ -103,13 +104,11 @@ export class ApplicationFormComponent implements OnInit {
         console.log(error)
       }
     } 
-    // else if (this.inputs.some(input => input.wasValidated())) {
-    //   alert('corriga os erros do form')
-    // }
 
   }
 
   public fileIsValid(): boolean {
+    this.fileWasValidated = true
     return FormValidator.validateFile(this.resumeFile)
   }
 

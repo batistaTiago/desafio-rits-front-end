@@ -31,7 +31,8 @@
     <label for="file"><i class="fas fa-paperclip"></i><span>Escolha o arquivo</span></label>
     <small *ngIf="resumeFile && fileIsValid()" class="file-name">Selecionado: <span>{{ resumeFile.name }}</span></small>
     <small *ngIf="resumeFile && !fileIsValid()" class="invalid-feedback">O arquivo selecionado é inválido: use extensões doc, docx ou pdf e um tamanho máximo de 10MB</small>
-    
+    <small *ngIf="!resumeFile && fileWasValidated" style="margin-top: 10px;" class="invalid-feedback">Selecione um arquivo</small>
+
     <button type="submit" class="submit-form-button">ENVIAR</button>
     
 </form>
