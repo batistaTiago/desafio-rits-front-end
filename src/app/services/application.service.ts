@@ -3,7 +3,6 @@ import { IApplication } from "../shared/application.interface";
 import { HttpClient } from "@angular/common/http"
 import { EnvironmentConfig } from "../shared/environment.config"
 import { AuthCredentials } from "../shared/auth-credentials";
-import { saveAs } from "file-saver";
 
 @Injectable()
 export class ApplicationService {
