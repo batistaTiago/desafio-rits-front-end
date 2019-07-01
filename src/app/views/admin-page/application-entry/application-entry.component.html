@@ -1,20 +1,20 @@
 <div class="application-container">
 
-    <span>Nome: </span> <span>{{ applicationData.nomeCompleto }}</span>
-    <span>Telefone: </span> <span>{{ applicationData.telefone }}</span>
-    <span>Email: </span> <a [href]="applicationData.email">{{ applicationData.email }}</a>
-    <span>Github: </span> <a [href]="applicationData.githubURL"><i class="fas fa-link"></i> Link</a>
-    <span>LinkedIn: </span> <a [href]="applicationData.linkedinURL"><i class="fas fa-link"></i> Link</a>
-    <span>Nível de inglês: </span> <span>{{ applicationData.english_level.nivelIngles }}</span>
-    <span>Pretensão salarial: </span> <span>R$ {{ applicationData.pretensaoSalarial }}</span>
-    <span>Currículo: </span> <a href="{{apiURL}}/download/{{ applicationData.id }}" class="download-button"><i
+    <span class="field-name">Nome: </span> <span class="field-value">{{ applicationData.nomeCompleto }}</span>
+    <span class="field-name">Telefone: </span> <span class="field-value">{{ applicationData.telefone }}</span>
+    <span class="field-name">Email: </span> <a class="field-value" [href]="applicationData.email">{{ applicationData.email }}</a>
+    <span class="field-name">Github: </span> <a class="field-value" [href]="applicationData.githubURL"><i class="fas fa-link"></i> Link</a>
+    <span class="field-name">LinkedIn: </span> <a class="field-value" [href]="applicationData.linkedinURL"><i class="fas fa-link"></i> Link</a>
+    <span class="field-name">Nível de inglês: </span> <span class="field-value">{{ applicationData.english_level.nivelIngles }}</span>
+    <span class="field-name">Pretensão salarial: </span> <span class="field-value">R$ {{ applicationData.pretensaoSalarial }}</span>
+    <span class="field-name">Currículo: </span> <a class="field-value" href="{{apiURL}}/download/{{ applicationData.id }}"><i
             class="fas fa-link"></i>Download</a>
 
     <div *ngIf="applicationData.coverLetter">
-        <span>Motivação: </span> <span style="font-size: 12px;">{{ applicationData.coverLetter }}</span>
+        <span class="field-name">Motivação: </span> <span class="field-value" style="font-size: 12px;">{{ applicationData.coverLetter }}</span>
     </div>
 
-    <span>Status: </span> <span>{{ applicationData.application_status.status.toUpperCase() }}</span>
+    <span class="field-name">Status: </span> <span class="field-value">{{ applicationData.application_status.status.toUpperCase() }}</span>
 
     <div class="buttons-container"
         *ngIf="applicationData.application_status.status === 'processamento' || applicationData.application_status.status === 'pendente'">

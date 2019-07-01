@@ -29,6 +29,7 @@
     <h3>Anexe seu currículo em PDF ou DOC</h3>
     <input type="file" name="file" id="file" class="bt-hidden-element" accept=".doc, .docx, .pdf" (change)="resumeSubmitted($event)" />
     <label for="file"><i class="fas fa-paperclip"></i><span>Escolha o arquivo</span></label>
+    <small *ngIf="resumeFile && fileIsValid()" class="file-name">Selecionado: <span>{{ resumeFile.name }}</span></small>
     <small *ngIf="resumeFile && !fileIsValid()" class="invalid-feedback">O arquivo selecionado é inválido: use extensões doc, docx ou pdf e um tamanho máximo de 10MB</small>
     
     <button type="submit" class="submit-form-button">ENVIAR</button>

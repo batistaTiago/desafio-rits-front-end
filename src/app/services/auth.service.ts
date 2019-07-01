@@ -36,6 +36,7 @@ export class AuthService implements CanActivate {
 
     public async authenticate(email: string, password: string): Promise<IAuthToken> {
         try {
+            this.shouldRefreshToken = true
             const serverResponse: any = await this.httpClient.post(`${this.apiURL}/login`, { email, password }).toPromise()
             const token = {
                 token: serverResponse.access_token, 
@@ -54,14 +55,8 @@ export class AuthService implements CanActivate {
 
     private async refresh() {
         try {
-
-            console.log('refreshing...')
-
             const url = `${this.apiURL}/refresh`
             const token = AuthCredentials.getToken().token
-
-            console.log('old token: ' + token)
-
             const serverResponse: any = await this.httpClient.get(url, { headers: { 'Authorization': `bearer ${token}` }}).toPromise()
             
             const refreshedToken = {
@@ -70,13 +65,7 @@ export class AuthService implements CanActivate {
                 tokenDuration: serverResponse.expires_in
             }
 
-            console.log('refreshed token: ' + refreshedToken.token)
-            console.log('atualizando o local')
             AuthCredentials.setToken(refreshedToken)
-            console.log('token local atualizado: ' + AuthCredentials.getToken().token)
-
-            console.log('deu certo?', (token != AuthCredentials.getToken().token))
-
             this.scheduleTokenRefresh()
 
         } catch (error) {
@@ -103,6 +92,7 @@ export class AuthService implements CanActivate {
             const token = AuthCredentials.getToken().token
             this.router.navigate(['/'])
             AuthCredentials.forgetData()
+            this.shouldRefreshToken = false
             this.httpClient.get(url, { headers: { 'Authorization': `bearer ${token}` }}).toPromise()
         } catch (error) {
             console.log(error)

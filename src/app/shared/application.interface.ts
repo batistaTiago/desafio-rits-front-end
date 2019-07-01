@@ -7,7 +7,13 @@ export interface IApplication {
     nivelIngles: number
     pretensaoSalarial: number
     curriculo: File
+    coverLetter?: string
 
     id?: number
     status?: string
+    
+
+    english_level?: any
+    application_status?: any
+
 }

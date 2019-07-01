@@ -1,6 +1,6 @@
 <app-hero></app-hero>
 
-<div class="feedback-container container" *ngIf="showFeedback !== undefined">
+<div class="feedback-container container" *ngIf="!postingApplication && showFeedback !== undefined">
     
     <div *ngIf="showFeedback === false">
         <h2 class="fail">Erro!</h2>

@@ -88,11 +88,18 @@ app-custom-input {
     display: block;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 576px) {
+    .container {
+        width: 550px;
+    }
+}
+
+@media (min-width: 768px) {
     .container {
         width: 750px;
     }
 }
+
 @media (min-width: 992px) {
     .container {
         width: 970px;

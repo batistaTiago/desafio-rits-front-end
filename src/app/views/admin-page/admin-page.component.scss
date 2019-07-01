@@ -50,7 +50,8 @@ header {
 .applications-root {
     padding: 25px;
     display: flex;
-    flex-flow: wrap;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 h3 {
@@ -71,8 +72,13 @@ span.user-name {
 }
 
 app-application-entry {
-    width: 30%;
-    // flex-grow: 0;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    app-application-entry {
+        width: 50%;
+    }   
 }
 
 app-footer {
